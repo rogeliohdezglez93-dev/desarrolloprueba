@@ -2,7 +2,7 @@ package com.example.pruebatecnica.model;
 
 import java.util.ArrayList;
 
-public class ClientResponsePet {
+public class ClientRequestPost {
 	
 	private int id;
 	private Category category;
@@ -49,12 +49,13 @@ public class ClientResponsePet {
 	}
 	@Override
 	public String toString() {
-		return "ClientResponsePet [id=" + id + ", category=" + category + ", name=" + name + ", photoUrls=" + photoUrls
+		return "ClientRequestPost [id=" + id + ", category=" + category + ", name=" + name + ", photoUrls=" + photoUrls
 				+ ", tags=" + tags + ", status=" + status + "]";
 	}
 	
 	
 	
-	
+
+
 
 }

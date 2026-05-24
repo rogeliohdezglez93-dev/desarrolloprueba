@@ -6,10 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.pruebatecnica.model.ClientResponsePet;
+import com.example.pruebatecnica.model.RequestPetPost;
+import com.example.pruebatecnica.model.ResponsePetServiceGet;
+import com.example.pruebatecnica.model.ResponsePetServicePost;
 import com.example.pruebatecnica.service.ServiceApp;
 
 
@@ -17,21 +20,23 @@ import com.example.pruebatecnica.service.ServiceApp;
 @RequestMapping("/api/pet")
 public class Controller {
 	
-	@Autowired
 	private ServiceApp serviceApp;
 	private static final Logger log = LoggerFactory.getLogger(Controller.class);
+	
+	public Controller(ServiceApp serviceApp) {
+		this.serviceApp = serviceApp;
+	}
 
 	@GetMapping("/{id}")
-	public ClientResponsePet decirHola(@PathVariable("id") Integer id) {
-		log.info(id+"id");
-		
+	public ResponsePetServiceGet serviceGet(@PathVariable("id") Integer id) {
+		log.info("inicia endPoint servicio get");
 		return serviceApp.getPet(id);
 	}
 	
 	@PostMapping
-	public String decirHolau() {
-		log.info("zzz");
-		return "Hola mundou";
+	public ResponsePetServicePost servicePetPost(@RequestBody RequestPetPost requestPost) {
+		log.info("inicia endPoint servicio post");
+		return serviceApp.postPet(requestPost);
 	}
 
 }
