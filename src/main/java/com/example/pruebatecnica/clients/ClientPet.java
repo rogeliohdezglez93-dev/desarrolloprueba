@@ -38,7 +38,6 @@ public class ClientPet {
 			log.info("consumo cliente pet get");		
 			String urlGet = "https://petstore.swagger.io/v2/pet/{id}";
 			ClientResponsePet clientResponsePet = restTemp.getForObject(urlGet,ClientResponsePet.class,id);
-			//ResponseEntity<String> response = restTemp.exchange(urlGet,HttpMethod.GET,null,String.class,id);
 			log.info("respuestaa {}",clientResponsePet.toString());
 			return clientResponsePet;
 		} catch (HttpClientErrorException.NotFound e) {
